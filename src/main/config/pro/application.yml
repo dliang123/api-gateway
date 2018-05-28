@@ -1,0 +1,76 @@
+mybatis:
+    type-aliases-package: "com.autoyol.im.entity"
+    mapper-locations: "classpath*:/mybatis/**/*Mapper.xml"
+
+
+logging:
+    level:
+        root: info
+        com.autoyol.im.entity: debug
+        jdbc.resultset: error
+    file: /dd/log/api/im-service.log
+
+info.app.name: 示例服务
+info.app.version: 1.0-SNAPSHOT
+info.app.description: 示例服务
+
+endpoints.enabled: false
+endpoints.health.enabled: true
+
+spring:
+    datasource:
+      url: "jdbc:mysql:replication://atzuchedb.mysql.rds.aliyuncs.com:3306,atzuchedbsalve.mysql.rds.aliyuncs.com:3306/atzuchedb?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&autoReconnect=true"
+      username: "atdb_yhq_201606"
+      password: "ENC(xfMh4l1rtVZNb+AbBeHJe5Z8UFdrjcWYLEX+q0JTE94wN/+o5f4rJw==)"
+      min: 20
+      max: 100
+      validation-query: "SELECT 1"
+      max-wait: 10000 #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制
+      max-idle: 10 #最大空闲数，数据库连接的最大空闲时间。超过空闲时间，数据库连接将被释放。设为0表示无限制
+      min-idle: 5  #最小空闲连接:连接池中容许保持空闲状态的最小连接数量,低于这个数量将创建新的连接
+      max-active: 100   #连接池的最大数据库连接数。设为0表示无限制
+      initial-size: 20  #初始化连接:连接池启动时创建的初始化连接数量
+      test-on-borrow: true
+      test-while-idle: true
+      remove-abandoned: true #超过removeAbandonedTimeout时间后，是否进 行没用连接（废弃）的回收（默认为false，调整为true)
+      remove-abandoned-timeout: 180 #超过时间限制，回收没有用(废弃)的连接（默认为 300秒，调整为180）
+      time-between-eviction-runs-millis: 18800
+    redis:
+      database: 0
+      host: 1d296eb602ed42ba.m.cnhza.kvstore.aliyuncs.com
+      password: 1d296eb602ed42ba:ztj44ugNeLEaoTsyr45EBdDvupTYcv
+      pool:
+              min-idle: 0
+              max-wait: -1
+              max-idle: 8
+              max-active: 50
+    data:
+          mongodb:
+            uri: mongodb://root:8K7XBrXClBK9Iuiqnmtade4sIKg1Q5q@dds-bp1933ae8c85dbc41.mongodb.rds.aliyuncs.com:3717,dds-bp1933ae8c85dbc42.mongodb.rds.aliyuncs.com:3717/message_center?replicaSet=mgset-4994137
+
+spring.jackson.serialization.write_dates_as_timestamps: false
+
+spring.application.name: 示例服务
+server.port: 8090
+
+env: 1
+envirenment: "pro"
+
+com:
+   aliyun:
+      mns:
+         accessKey: "58zDKyr5MjeH5l0Y2Uhf5oFPeQmXmB"
+         accessId: "c2YhUUMb1tfZmmC2"
+         accountEndPoint: "http://1379859149635672.mns.cn-hangzhou-internal.aliyuncs.com/"
+   autoyol:
+         mns:
+            queue:
+               message: "im-message-callback-queue"
+
+auto.im.gateway.url: http://im.aotuzuche.com
+
+
+
+
+
+
